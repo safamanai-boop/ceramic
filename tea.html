@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tea Sets – Pottery of the Soul</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arizonia&family=Courgette&family=Fleur+De+Leah&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Stint+Ultra+Condensed&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="page.css" />
+  </head>
+  <body style="background-image: url(2.jpg)">
+    <header class="imgg" style="height: 105px">
+      <img src="logoo.png" alt="logo" style="height: 100px; width: 100px" />
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about .html">About</a>
+        <a href="contact.html">Review</a>
+        <a href="mes-commandes.html" style="position: relative">
+          🛒 My Orders
+          <span
+            id="cart-badge"
+            style="
+              display: none;
+              position: absolute;
+              top: -8px;
+              right: -14px;
+              background: #a3001b;
+              color: white;
+              border-radius: 50%;
+              width: 20px;
+              height: 20px;
+              font-size: 0.7rem;
+              align-items: center;
+              justify-content: center;
+              font-family: sans-serif;
+              font-weight: bold;
+            "
+            >0</span
+          >
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          width: fit-content;
+          margin: auto;
+        "
+      >
+        <button onclick="move(-1)">⫷</button>
+        <div class="carousel">
+          <img src="tea8.jpg" class="active" />
+          <img src="tea9.jpg" />
+          <img src="tea2.jpg" />
+          <img src="tea4.jpg" />
+          <img src="tea5.jpg" />
+          <img src="tea6.jpg" />
+          <img src="tea7.jpg" />
+          <div style="padding-left: 20px; text-align: center">
+            <p id="text">$12.00</p>
+            <button
+              class="order-btn"
+              data-id="5"
+              data-name="Tea Set Classic"
+              data-price="12.00"
+              data-image="tea8.jpg"
+            >
+              🛒 Add to Cart
+            </button>
+          </div>
+        </div>
+        <button onclick="move(1)">⫸</button>
+      </div>
+    </main>
+
+    <footer><p>pottery of the soul ©</p></footer>
+
+    <script src="script.js"></script>
+    <script>
+      const items = [
+        { id: "8", price: "12.00", name: "Tea Set Classic", image: "tea8.jpg" },
+        { id: "9", price: "10.55", name: "Tea Set 2", image: "tea9.jpg" },
+        { id: "10", price: "9.25", name: "Tea Set 3", image: "tea2.jpg" },
+        { id: "11", price: "10.25", name: "Tea Set 4", image: "tea4.jpg" },
+        { id: "12", price: "11.00", name: "Tea Set 5", image: "tea5.jpg" },
+        { id: "13", price: "9.75", name: "Tea Set 6", image: "tea6.jpg" },
+        { id: "14", price: "10.00", name: "Tea Set 7", image: "tea7.jpg" },
+      ];
+      const imgs = document.querySelectorAll(".carousel img");
+      const btn = document.querySelector(".order-btn");
+      let i = 0;
+
+      function move(dir) {
+        imgs[i].classList.remove("active");
+        i = (i + dir + imgs.length) % imgs.length;
+        imgs[i].classList.add("active");
+        document.getElementById("text").textContent = "$" + items[i].price;
+        btn.dataset.name = items[i].name;
+        btn.dataset.price = items[i].price;
+        btn.dataset.image = items[i].image;
+        btn.dataset.id = items[i].id; // ✅ FIX: utilise l'id unique
+      }
+    </script>
+  </body>
+</html>

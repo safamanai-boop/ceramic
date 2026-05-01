@@ -1,0 +1,157 @@
+/* Reset */
+body {
+    margin: 0;
+    font-family: "Courgette", cursive;
+    font-size:larger;
+
+    
+    
+}
+
+/* Header */
+header {
+   display: flex;
+    justify-content: space-between; /* logo left, nav right */
+    align-items: center;            /* vertical alignment */
+    padding: 10px 20px;
+    background-color: #FFC0CB;
+   
+}
+
+footer {
+    background-color: #FFC0CB;
+    text-align: center;
+    padding: 8px;
+    font-family: "Fleur De Leah", cursive;
+    font-weight: bolder;
+    letter-spacing: 0.3em;
+    font-size: x-large;
+    
+
+}
+
+
+/* Navbar */
+nav {
+
+    font-family: "Courgette", cursive;
+    color: black;
+    text-align: right;
+    padding: 15px;
+}
+
+nav a {
+    color: black;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color:#A3001B;
+}
+
+/* Title */
+.title {
+    text-align: center;
+    margin-top: 20px;
+}
+.p{
+  width: 70%;
+  padding-left: 15%;
+
+
+}
+.img1 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  ;
+}
+
+.img {
+  opacity: 0;
+  transform: translateX(-80px); /* slide from left */
+  transition: all 1.6s ease;
+}
+
+.img.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.img2 {
+  opacity: 0;
+  transform: translateX(0px); /* slide from left */
+  transition: all 1.6s ease;
+}
+
+.img2.visible {
+  opacity: 1;
+  transform: translateX(40px);
+
+
+}
+.img3 {
+  opacity: 0;
+  transition: opacity 1.8s ease;
+}
+
+.img3.visible {
+  opacity: 1;
+}
+
+.contact-container{
+  max-width:500px;
+  margin:60px auto;
+  padding:25px;
+  background-image: url('bggg.png');
+  border-radius:12px;
+  box-shadow:0 10px 25px rgba(0,0,0,.1);
+ 
+}
+
+.contact-container h1{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.contact-form{
+  display:flex;
+  flex-direction:column;
+}
+
+.contact-form label{
+  margin-top:10px;
+}
+
+.contact-form input,
+.contact-form textarea{
+  padding:10px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-family: "Courgette", cursive;
+}
+
+
+.contact-form button {
+    background-color: #FFFACD;
+    color:black;
+    border: none;
+    padding: 18px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: "Stint Ultra Condensed", serif;
+    width: 100px;
+    margin: auto
+    
+}
+
+/* Hover effect */
+.contact-form button:hover {
+    background-color: #A3001B;
+    color: #FFFACD;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}

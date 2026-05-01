@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mugs – Pottery of the Soul</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arizonia&family=Courgette&family=Fleur+De+Leah&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Stint+Ultra+Condensed&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="page.css" />
+  </head>
+  <body style="background-image: url(11.png)">
+    <header class="imgg" style="height: 105px">
+      <img src="logoo.png" alt="logo" style="height: 100px; width: 100px" />
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about .html">About</a>
+        <a href="contact.html">Review</a>
+        <a href="mes-commandes.html" style="position: relative">
+          🛒 My Orders
+          <span
+            id="cart-badge"
+            style="
+              display: none;
+              position: absolute;
+              top: -8px;
+              right: -14px;
+              background: #a3001b;
+              color: white;
+              border-radius: 50%;
+              width: 20px;
+              height: 20px;
+              font-size: 0.7rem;
+              align-items: center;
+              justify-content: center;
+              font-family: sans-serif;
+              font-weight: bold;
+            "
+            >0</span
+          >
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          width: fit-content;
+          margin: auto;
+        "
+      >
+        <button onclick="move(-1)">⫷</button>
+        <div class="carousel">
+          <img src="mug.jpg" class="active" />
+          <img src="mug2.jpg" />
+          <img src="anim.jpg" />
+          <img src="mug3.jpg" />
+          <img src="mug4.jpg" />
+          <img src="mug5.jpg" />
+          <img src="mug6.jpg" />
+          <img src="mug7.jpg" />
+          <div style="padding-left: 20px; text-align: center">
+            <p id="text">$10.00</p>
+            <button
+              class="order-btn"
+              data-id="1"
+              data-name="Morning Mug"
+              data-price="10.00"
+              data-image="mug.jpg"
+            >
+              🛒 Add to Cart
+            </button>
+          </div>
+        </div>
+        <button onclick="move(1)">⫸</button>
+      </div>
+    </main>
+
+    <footer><p>pottery of the soul ©</p></footer>
+
+    <script src="script.js"></script>
+    <script>
+      const items = [
+        { id: "15", price: "10.00", name: "Morning Mug", image: "mug.jpg" },
+        { id: "16", price: "8.75", name: "Mug 2", image: "mug2.jpg" },
+        { id: "17", price: "7.25", name: "Mug 3", image: "anim.jpg" },
+        { id: "18", price: "9.25", name: "Mug 4", image: "mug3.jpg" },
+        { id: "19", price: "12.00", name: "Mug 5", image: "mug4.jpg" },
+        { id: "20", price: "8.55", name: "Mug 6", image: "mug5.jpg" },
+        { id: "21", price: "8.25", name: "Mug 7", image: "mug6.jpg" },
+        { id: "22", price: "9.50", name: "Mug 8", image: "mug7.jpg" },
+      ];
+      const imgs = document.querySelectorAll(".carousel img");
+      const btn = document.querySelector(".order-btn");
+      let i = 0;
+
+      function move(dir) {
+        imgs[i].classList.remove("active");
+        i = (i + dir + imgs.length) % imgs.length;
+        imgs[i].classList.add("active");
+        document.getElementById("text").textContent = "$" + items[i].price;
+        btn.dataset.name = items[i].name;
+        btn.dataset.price = items[i].price;
+        btn.dataset.image = items[i].image;
+        btn.dataset.id = items[i].id; // ✅ FIX: utilise l'id unique
+      }
+    </script>
+  </body>
+</html>

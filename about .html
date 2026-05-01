@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ceramic</title>
+    <link rel="stylesheet" href="stylee.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+   <link href="https://fonts.googleapis.com/css2?family=Arizonia&family=Ballet:opsz@16..72&family=Courgette&family=Dancing+Script:wght@400..700&family=Fleur+De+Leah&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Stint+Ultra+Condensed&display=swap" rel="stylesheet">
+    
+</head>
+<body style="background-image: url(bk.jpg);" >
+
+  <header class="imgg" style="height: 105px;">
+    <img src="logoo.png" alt="logo" style="height: 100px; width: 100px;">
+    <nav>
+    <a href="index.html">Home</a>
+        <a href="about .html">About</a>
+        <a href="contact.html">Review</a>
+        <a href="mes-commandes.html" class="cart-link">
+           My wishlist
+            <span id="cart-badge">0</span>
+        </a>
+    </nav>
+</header>
+    <main >
+        <section class="about-section">
+            <div class="container">
+                <h1>About us </h1>
+                   
+                    <div class="about-text">
+                       
+                        <h1 style="font-weight: 400;">Handmade with Heart</h1>
+                        <div class="img1">
+                            
+        
+                                <img src="animm.png" class="img" style="height: 500px">
+                        <p style="padding: 2%">We make our ceramics by hand, <br>one piece at a time, so nothing ever feels mass-produced or identical.<br> 
+                            They’re designed to be used again and again,
+                             not thrown away<br>
+   Unlike single-use plastics or disposable tableware, our ceramics are made to be used every day,<br> for years to come. A single mug or
+    bowl can replace hundreds—even<br>
+    thousands—of paper or plastic cups over its lifetime. No waste, no guilt.<br> Just beautiful function that endures. </p>
+    </div>
+    <h1 style="font-weight: 400;">Reusable by Nature, Built to Last</h1> 
+                        <div class="img1">
+                           
+                        <p style="padding: 2%">which makes them a simple way to be a bit kinder to the planet in everyday life.<br> We care about keeping things
+                             sustainable without making them complicated or 
+                            expensive. <br>That’s why our pieces are both eco-friendly and fairly priced
+                        Unlike single-use plastics or disposable tableware, our ceramics are made to be used every day, for years to come. A single mug or<br>
+                         bowl can replace hundreds—even thousands—of paper or plastic cups over its lifetime. No waste, no guilt. Just beautiful function that endures.</p>
+                        <img src="animmm.png" class="img2" style="height: 500px;width: 500px;" >
+                        </div>
+                    </div>
+                    <h1 style="font-weight: 400;">Well-Priced for Real Life</h1>
+                        <div class="img1">
+                          <p style="padding: 2%">Whether you're looking to brighten your morning coffee, decorate your space, or find the perfect gift, our handmade 
+                            collection brings warmth, elegance,
+                             and a touch of
+                             sweetness into your life.
+                         Handmade shouldn’t mean inaccessible. We keep our prices fair by selling direct 
+                            and valuing sustainability over markup. You get the beauty and durability of artisan 
+                            ceramics at a price that makes sense for everyday use—because loving the earth 
+                            and your budget shouldn’t be a trade-off.
+                            Handmade with passion. Designed to make you smile</p>
+                           <img src="mmm.png" class="img3" style="height: 500px;width:600px;" >
+                    </div>  
+                        
+         <img   src="logoo.png">           
+                    
+          
+        </section>
+    </main>
+
+    <footer>
+        <p>  pottery of the soul ©</p>
+    </footer>
+<script>
+
+  let lastScrollY = window.scrollY;
+  let scrollingDown = true;
+
+  window.addEventListener('scroll', () => {
+    scrollingDown = window.scrollY > lastScrollY;
+    lastScrollY = window.scrollY;
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && scrollingDown) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.img, .img2, .img3').forEach(el => {
+    observer.observe(el);
+
+  });
+</script>
+
+</body>
+</html>

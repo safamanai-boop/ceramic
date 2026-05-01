@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Orders – Pottery of the Soul</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arizonia&family=Courgette&family=Fleur+De+Leah&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Stint+Ultra+Condensed&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="page.css" />
+    <style>
+      body {
+        background-image: url(bk.jpg);
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      main {
+        flex: 1;
+        padding: 2rem 5%;
+      }
+
+      .page-header {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      .page-header h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 2.2rem;
+        font-weight: 400;
+        color: #2c1a0e;
+      }
+      .divider {
+        width: 60px;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #a3001b, transparent);
+        margin: 0.5rem auto;
+      }
+
+      /* ── CART TABLE ── */
+      .cart-wrapper {
+        max-width: 750px;
+        margin: 0 auto;
+      }
+      .cart-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: "Courgette", cursive;
+        background: rgba(255, 255, 255, 0.88);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+        margin-bottom: 1.2rem;
+      }
+      .cart-table th {
+        background-color: #ffc0cb;
+        padding: 12px 16px;
+        text-align: left;
+        font-size: 0.9rem;
+        letter-spacing: 0.05em;
+        color: #2c1a0e;
+      }
+      .cart-table td {
+        padding: 12px 16px;
+        border-bottom: 1px solid #f0e0e5;
+        vertical-align: middle;
+      }
+      .cart-table tr:last-child td {
+        border-bottom: none;
+      }
+      .cart-table img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+      .item-name {
+        font-size: 1rem;
+        color: #2c1a0e;
+      }
+      .item-price {
+        color: #a3001b;
+        font-weight: bold;
+      }
+
+      /* qty controls */
+      .qty-controls {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .qty-controls button {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        border: none;
+        background: #ffc0cb;
+        font-size: 1rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s;
+        transform: none !important;
+      }
+      .qty-controls button:hover {
+        background: #a3001b;
+        color: white;
+        box-shadow: none !important;
+      }
+      .qty-num {
+        font-size: 1rem;
+        min-width: 24px;
+        text-align: center;
+      }
+
+      /* remove btn */
+      .btn-remove {
+        background: none;
+        border: none;
+        color: #a3001b;
+        cursor: pointer;
+        font-size: 1.2rem;
+        padding: 0;
+      }
+      .btn-remove:hover {
+        transform: scale(1.2) !important;
+        box-shadow: none !important;
+        background: none !important;
+      }
+
+      /* total */
+      .total-bar {
+        background: rgba(255, 192, 203, 0.75);
+        border-radius: 10px;
+        padding: 14px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: "Playfair Display", serif;
+        font-size: 1.2rem;
+        color: #2c1a0e;
+        margin-bottom: 1rem;
+      }
+      .total-bar strong {
+        color: #a3001b;
+        font-size: 1.4rem;
+      }
+
+      /* clear btn */
+      .btn-clear {
+        display: block;
+        margin: 0 auto;
+        padding: 10px 28px;
+        background-color: #fffacd;
+        color: black;
+        border: 2px solid #a3001b;
+        border-radius: 10px;
+        font-family: "Stint Ultra Condensed", serif;
+        font-size: 1rem;
+        letter-spacing: 0.1em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .btn-clear:hover {
+        background-color: #a3001b;
+        color: #fffacd;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      /* ── EMPTY STATE ── */
+      #empty-state {
+        display: none;
+        text-align: center;
+        padding: 3rem;
+        font-family: "Courgette", cursive;
+      }
+      .basket-svg {
+        width: 110px;
+        height: 110px;
+        margin: 0 auto 1rem;
+        display: block;
+        opacity: 0.75;
+      }
+      #empty-state h2 {
+        font-size: 1.6rem;
+        font-weight: 400;
+        color: #2c1a0e;
+        margin-bottom: 1.2rem;
+      }
+      #empty-state a {
+        display: inline-block;
+        padding: 12px 32px;
+        background-color: #fffacd;
+        color: black;
+        text-decoration: none;
+        font-weight: bold;
+        font-family: "Stint Ultra Condensed", serif;
+        font-size: 1rem;
+        letter-spacing: 0.12em;
+        border: 2px solid #a3001b;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+      }
+      #empty-state a:hover {
+        background-color: #a3001b;
+        color: #fffacd;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      /* ── NEW ITEM HIGHLIGHT ── */
+      @keyframes highlight {
+        0% {
+          background-color: rgba(255, 192, 203, 0.6);
+        }
+        100% {
+          background-color: transparent;
+        }
+      }
+      .new-item {
+        animation: highlight 1.2s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="imgg" style="height: 105px">
+      <img src="logoo.png" alt="logo" style="height: 100px; width: 100px" />
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about .html">About</a>
+        <a href="contact.html">Review</a>
+        <a href="mes-commandes.html" style="color: #a3001b; position: relative">
+          🛒 My Orders
+          <span
+            id="cart-badge"
+            style="
+              display: none;
+              position: absolute;
+              top: -8px;
+              right: -14px;
+              background: #a3001b;
+              color: white;
+              border-radius: 50%;
+              width: 20px;
+              height: 20px;
+              font-size: 0.7rem;
+              align-items: center;
+              justify-content: center;
+              font-family: sans-serif;
+              font-weight: bold;
+            "
+            >0</span
+          >
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="page-header">
+        <h1>My Orders</h1>
+        <div class="divider"></div>
+      </div>
+
+      <!-- Cart table (shown when items exist) -->
+      <div class="cart-wrapper" id="cart-content">
+        <table class="cart-table">
+          <thead>
+            <tr>
+              <th>Photo</th>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Qty</th>
+              <th>Subtotal</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="cart-body"></tbody>
+        </table>
+
+        <div class="total-bar">
+          <span>Total</span>
+          <strong id="cart-total">$0.00</strong>
+        </div>
+
+        <button class="btn-clear" onclick="clearCart()">🗑 Clear Cart</button>
+      </div>
+
+      <!-- Empty state (shown when cart is empty) -->
+      <div id="empty-state">
+        <svg
+          class="basket-svg"
+          viewBox="0 0 100 100"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M25 38 Q20 15 50 15 Q80 15 75 38"
+            fill="none"
+            stroke="#A3001B"
+            stroke-width="5"
+            stroke-linecap="round"
+          />
+          <rect
+            x="12"
+            y="38"
+            width="76"
+            height="10"
+            rx="5"
+            fill="#FFC0CB"
+            stroke="#A3001B"
+            stroke-width="2"
+          />
+          <path
+            d="M18 48 L24 78 Q25 84 32 84 L68 84 Q75 84 76 78 L82 48 Z"
+            fill="#FFF0F3"
+            stroke="#A3001B"
+            stroke-width="2"
+          />
+          <line
+            x1="38"
+            y1="50"
+            x2="36"
+            y2="82"
+            stroke="#FFC0CB"
+            stroke-width="2"
+          />
+          <line
+            x1="50"
+            y1="50"
+            x2="50"
+            y2="83"
+            stroke="#FFC0CB"
+            stroke-width="2"
+          />
+          <line
+            x1="62"
+            y1="50"
+            x2="64"
+            y2="82"
+            stroke="#FFC0CB"
+            stroke-width="2"
+          />
+        </svg>
+        <h2>Your basket is empty</h2>
+        <a href="auth.html">Start Shopping</a>
+      </div>
+    </main>
+
+    <footer><p>pottery of the soul ©</p></footer>
+
+    <script>
+      // ── helpers ──────────────────────────────────
+      function getCart() {
+        return JSON.parse(localStorage.getItem("pottery_cart") || "[]");
+      }
+      function saveCart(cart) {
+        localStorage.setItem("pottery_cart", JSON.stringify(cart));
+      }
+
+      function updateBadge() {
+        const cart = getCart();
+        const count = cart.reduce((s, i) => s + i.quantity, 0);
+        const badge = document.getElementById("cart-badge");
+        if (!badge) return;
+        badge.textContent = count;
+        badge.style.display = count > 0 ? "flex" : "none";
+      }
+
+      // ── render cart table ─────────────────────────
+      function renderCart(newItemId) {
+        const cart = getCart();
+        const tbody = document.getElementById("cart-body");
+        const cartContent = document.getElementById("cart-content");
+        const emptyState = document.getElementById("empty-state");
+
+        if (!cart.length) {
+          cartContent.style.display = "none";
+          emptyState.style.display = "block";
+          updateBadge();
+          return;
+        }
+
+        cartContent.style.display = "block";
+        emptyState.style.display = "none";
+        tbody.innerHTML = "";
+
+        let total = 0;
+        cart.forEach((item, index) => {
+          const subtotal = item.price * item.quantity;
+          total += subtotal;
+
+          const tr = document.createElement("tr");
+          // highlight newly added row
+          if (item.id === newItemId) tr.classList.add("new-item");
+
+          tr.innerHTML = `
+            <td><img src="${item.image || "logoo.png"}" alt="${item.name}"
+                     onerror="this.src='logoo.png'"></td>
+            <td class="item-name">${item.name}</td>
+            <td class="item-price">$${parseFloat(item.price).toFixed(2)}</td>
+            <td>
+                <div class="qty-controls">
+                    <button onclick="changeQty(${index}, -1)">−</button>
+                    <span class="qty-num">${item.quantity}</span>
+                    <button onclick="changeQty(${index},  1)">+</button>
+                </div>
+            </td>
+            <td class="item-price">$${subtotal.toFixed(2)}</td>
+            <td><button class="btn-remove" onclick="removeItem(${index})">🗑</button></td>
+        `;
+          tbody.appendChild(tr);
+        });
+
+        document.getElementById("cart-total").textContent =
+          "$" + total.toFixed(2);
+        updateBadge();
+      }
+
+      // ── qty / remove / clear ──────────────────────
+      function changeQty(index, dir) {
+        const cart = getCart();
+        cart[index].quantity += dir;
+        if (cart[index].quantity <= 0) cart.splice(index, 1);
+        saveCart(cart);
+        renderCart();
+      }
+
+      function removeItem(index) {
+        const cart = getCart();
+        cart.splice(index, 1);
+        saveCart(cart);
+        renderCart();
+      }
+
+      function clearCart() {
+        localStorage.removeItem("pottery_cart");
+        renderCart();
+      }
+
+      // ── init ──────────────────────────────────────
+      renderCart();
+    </script>
+  </body>
+</html>

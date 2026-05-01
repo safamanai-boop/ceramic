@@ -1,0 +1,186 @@
+/* Reset */
+body {
+    margin: 0;
+    font-family: "Courgette", cursive;
+    margin: 0; /* removes white space above header */
+    background-size: cover;       /* makes it fill screen */
+    background-repeat: no-repeat; /* stops repeating */
+    background-position: center;  /* centers image */
+
+
+    
+    
+}
+
+/* Header */
+header {
+   display: flex;
+    justify-content: space-between; /* logo left, nav right */
+    align-items: center;            /* vertical alignment */
+    margin: 0;
+    padding: 0;
+    background-color: #FFC0CB;
+   
+}
+
+footer {
+    background-color: #FFC0CB;
+    text-align: center;
+    padding: 10px;
+    font-family: "Fleur De Leah", cursive;
+    font-weight: bolder;
+    letter-spacing: 0.3em;
+    
+
+}
+/* Navbar */
+nav {
+
+    font-family: "Courgette", cursive;
+    color: black;
+    text-align: right;
+    padding: 15px;
+}
+
+nav a {
+    color: black;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color:#A3001B;
+}
+
+/* Title */
+.title {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Cards container */
+.cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 100px;
+    flex-wrap: wrap; 
+}
+
+/* Card */
+.card {
+    background-image: url('bggg.png');
+    background-size: cover;
+    background-position: center;
+    width: 250px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    text-align: center;
+    padding: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    font-family: "Courgette", cursive;
+}
+
+/* Card image */
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+/* Hover effect */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+
+
+button ,.button{
+    background-color: #FFFACD;
+    color:black;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: "Stint Ultra Condensed", serif;
+}
+
+/* Hover effect */
+button:hover ,.button:hover{
+    background-color: #A3001B;
+    color: #FFFACD;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+main {
+    flex: 1; 
+    padding: 10%;
+}
+
+    .carousel {
+  width: 400px; 
+  height: 350px;/* fixed width instead of max-width */
+  overflow: hidden;
+  background-color: #FFC0CB;
+  border-radius: 12px;
+  padding: 2%;
+}
+
+    .carousel img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .carousel img.active {
+      display: block;
+    }
+
+    .carousel p {
+      margin: 10px 0;
+      color: #333;
+    }
+
+    .carousel button {
+      padding: 8px 16px;
+      margin: 5px;
+      cursor: pointer;
+    }
+    .track {
+  display: flex;
+  flex-direction: row; /* add this */
+  transition: transform 0.4s ease;
+}
+.slide {
+  min-width: 100%
+}
+/* ── CART BADGE in header ── */
+.cart-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#cart-badge {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: -12px;
+    background: #A3001B;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 0.7rem;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+    font-weight: bold;
+}

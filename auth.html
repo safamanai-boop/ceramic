@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+     
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pottery of the soul</title>
+    <link rel="stylesheet" href="auth.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arizonia&family=Ballet:opsz@16..72&family=Courgette&family=Dancing+Script:wght@400..700&family=Fleur+De+Leah&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Stint+Ultra+Condensed&display=swap"
+      rel="stylesheet"
+    />
+    
+  </head>
+  <body style="background-image: url(bk.jpg)">
+    <header class="imgg" style="height: 105px">
+      <img src="logoo.png" alt="logo" style="height: 100px; width: 100px" />
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about .html">About</a>
+        <a href="contact.html">Review</a>
+        <a href="mes-commandes.html" class="cart-link">
+           My wishlist
+          <span id="cart-badge">0</span>
+        </a>
+      </nav>
+    </header>
+
+    <main class="auth-main">
+      <!-- TABS -->
+      <div class="auth-box">
+        <div class="tabs">
+          <button class="tab active" onclick="switchTab('login')">
+            Sign In
+          </button>
+          <button class="tab" onclick="switchTab('register')">Register</button>
+        </div>
+
+        <!-- ── LOGIN FORM ── -->
+        <form
+          name="loginForm"
+          id="loginForm"
+          action="back/login.php"
+          method="POST"
+          onsubmit="return validateLogin()"
+        >
+          <div class="form-group">
+            <label for="login-email">Email</label>
+            <input
+              type="text"
+              id="login-email"
+              name="email"
+              placeholder="your@email.com"
+            />
+            <span class="field-error" id="err-login-email"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="login-pass">Password</label>
+            <input
+              type="password"
+              id="login-pass"
+              name="password"
+              placeholder="••••••••"
+            />
+            <span class="field-error" id="err-login-pass"></span>
+          </div>
+
+          <div id="login-msg" class="form-msg"></div>
+          <a href="mes-commandes.html">
+          <button type="submit" class="btn-submit">Sign In</button>
+
+          </a>
+          <p class="switch-hint">
+            No account? <a onclick="switchTab('register')">Register here</a>
+          </p>
+        </form>
+
+        <!-- ── REGISTER FORM ── -->
+        <form
+          name="registerForm"
+          id="registerForm"
+          style="display: none"
+          action="back/register.php"
+          method="POST"
+          onsubmit="return validateRegister()"
+        >
+          <div class="form-group">
+            <label for="reg-name">Full Name</label>
+            <input
+              type="text"
+              id="reg-name"
+              name="full_name"
+              placeholder="Your name"
+            />
+            <span class="field-error" id="err-reg-name"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-email">Email</label>
+            <input
+              type="text"
+              id="reg-email"
+              name="email"
+              placeholder="your@email.com"
+            />
+            <span class="field-error" id="err-reg-email"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-pass">Password</label>
+            <input
+              type="password"
+              id="reg-pass"
+              name="password"
+              placeholder="Min. 6 characters"
+            />
+            <span class="field-error" id="err-reg-pass"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-pass2">Confirm Password</label>
+            <input
+              type="password"
+              id="reg-pass2"
+              name="confirm_password"
+              placeholder="Repeat password"
+            />
+            <span class="field-error" id="err-reg-pass2"></span>
+          </div>
+
+          <div id="register-msg" class="form-msg"></div>
+          <a href="mes-commandes.html"
+          <button type="submit" class="btn-submit">Create Account</button>
+        </a>
+          <p class="switch-hint">
+            Already have an account? <a onclick="switchTab('login')">Sign in</a>
+          </p>
+        </form>
+      </div>
+    </main>
+
+    <footer>
+      <p>pottery of the soul ©</p>
+    </footer>
+    <script>
+function switchTab(tab) {
+  const lf = document.getElementById("loginForm");
+  const rf = document.getElementById("registerForm");
+  const tabs = document.querySelectorAll(".tab");
+  if (!lf) return;
+  if (tab === "login") {
+    lf.style.display = "block";
+    rf.style.display = "none";
+    tabs[0].classList.add("active");
+    tabs[1].classList.remove("active");
+  } else {
+    lf.style.display = "none";
+    rf.style.display = "block";
+    tabs[0].classList.remove("active");
+    tabs[1].classList.add("active");
+  }
+}
+</script>
+
+    
+  </body>
+</html>
